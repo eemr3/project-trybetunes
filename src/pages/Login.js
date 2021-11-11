@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Logo from '../images/logo.svg';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import Header from '../components/Header';
 
 class Login extends Component {
   constructor() {
@@ -45,6 +46,7 @@ class Login extends Component {
     const { userName, isDisabled, responseApi, isLoading } = this.state;
     return (
       <div data-testid="page-login">
+        <Header />
         <img src={ Logo } alt="Logo Trybe Tunes" />
         <form onSubmit={ this.handleClick }>
           <label htmlFor="user-name">
@@ -74,11 +76,4 @@ class Login extends Component {
   }
 }
 
-// Login.propTypes = {
-//   history: PropTypes.objectOf(),
-// };
-
-// Login.defaultProps = {
-//   history: null,
-// };
 export default Login;
