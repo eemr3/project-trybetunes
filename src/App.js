@@ -5,7 +5,6 @@ import Routes from './routes/Routes';
 class App extends React.Component {
   render() {
     return (
-
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
