@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
+import NavBar from './NavBar';
 
 class Header extends Component {
   constructor() {
@@ -27,14 +28,15 @@ class Header extends Component {
     return (
       isLoading === true ? (<Loading />)
         : (
-          <header data-testid="header-component">
-            <p>Pesquisa</p>
-            <p>Favoritas</p>
-            <p>Perfil</p>
-            <div data-testid="header-user-name">
-              <span>{user}</span>
-            </div>
-          </header>)
+          <div>
+            <header data-testid="header-component">
+              <NavBar />
+              <div data-testid="header-user-name">
+                <span>{user}</span>
+              </div>
+            </header>
+          </div>
+        )
     );
   }
 }
