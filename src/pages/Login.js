@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import Logo from '../images/logo.svg';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
-import Header from '../components/Header';
 
 class Login extends Component {
   constructor() {
@@ -45,33 +44,35 @@ class Login extends Component {
   render() {
     const { userName, isDisabled, responseApi, isLoading } = this.state;
     return (
-      <div data-testid="page-login">
-        <Header />
-        <img src={ Logo } alt="Logo Trybe Tunes" />
-        <form onSubmit={ this.handleClick }>
-          <label htmlFor="user-name">
-            Nome
-            <input
-              type="text"
-              name="name"
-              id="user-name"
-              data-testid="login-name-input"
-              onChange={ this.handleChangeLogin }
-              value={ userName }
-            />
-            <button
-              type="button"
-              data-testid="login-submit-button"
-              disabled={ isDisabled }
-              onClick={ this.handleClick }
-            >
-              Enrar
-            </button>
-          </label>
-          {isLoading && <Loading />}
-          {responseApi && <Redirect to="/search" />}
-        </form>
-      </div>
+      isLoading ? (<Loading />)
+        : (
+          <div data-testid="page-login">
+            <img src={ Logo } alt="Logo Trybe Tunes" />
+            <form onSubmit={ this.handleClick }>
+              <label htmlFor="user-name">
+                Nome
+                <input
+                  type="text"
+                  name="name"
+                  id="user-name"
+                  data-testid="login-name-input"
+                  onChange={ this.handleChangeLogin }
+                  value={ userName }
+                />
+                <button
+                  type="button"
+                  data-testid="login-submit-button"
+                  disabled={ isDisabled }
+                  onClick={ this.handleClick }
+                >
+                  Enrar
+                </button>
+              </label>
+
+              {responseApi && <Redirect to="/search" />}
+            </form>
+          </div>
+        )
     );
   }
 }

@@ -26,17 +26,17 @@ class Header extends Component {
   render() {
     const { user, isLoading } = this.state;
     return (
-      isLoading === true ? (<Loading />)
-        : (
-          <div>
-            <header data-testid="header-component">
+      <header data-testid="header-component">
+        {isLoading === true ? (<Loading />)
+          : (
+            <div>
               <NavBar />
               <div data-testid="header-user-name">
                 <span>{user}</span>
               </div>
-            </header>
-          </div>
-        )
+            </div>
+          )}
+      </header>
     );
   }
 }
