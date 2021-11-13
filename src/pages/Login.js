@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Logo from '../images/logo.svg';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import Button from '../components/Button/Button';
+import Input from '../components/Input/Input';
+import Logo from '../images/logo.svg';
+
+import './Login.css';
 
 class Login extends Component {
+  _isMonted = false;
+
   constructor() {
     super();
     this.state = {
@@ -28,10 +34,10 @@ class Login extends Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.redirectSearch();
+    this.setUserNameInCreateUser();
   }
 
-  redirectSearch = async () => {
+  setUserNameInCreateUser = async () => {
     const { name } = this.state;
     this.setState(({ isLoading: true }));
     const response = await createUser({ name });
@@ -42,33 +48,32 @@ class Login extends Component {
   }
 
   render() {
-    const { userName, isDisabled, responseApi, isLoading } = this.state;
+    const { name, isDisabled, responseApi, isLoading } = this.state;
     return (
-      isLoading ? (<Loading />)
+      isLoading ? (<Loading className="loading-container-login" />)
         : (
-          <div data-testid="page-login">
+          <div data-testid="page-login" className="login-container">
             <img src={ Logo } alt="Logo Trybe Tunes" />
             <form onSubmit={ this.handleClick }>
-              <label htmlFor="user-name">
-                Nome
-                <input
-                  type="text"
-                  name="name"
-                  id="user-name"
-                  data-testid="login-name-input"
-                  onChange={ this.handleChangeLogin }
-                  value={ userName }
-                />
-                <button
-                  type="button"
-                  data-testid="login-submit-button"
-                  disabled={ isDisabled }
-                  onClick={ this.handleClick }
-                >
-                  Enrar
-                </button>
-              </label>
-
+              <Input
+                type="text"
+                inputName="name"
+                id="user-name"
+                dataTestid="login-name-input"
+                handleChangeLogin={ this.handleChangeLogin }
+                value={ name }
+                placeholder="Nome"
+                className="login-container__input"
+              />
+              <Button
+                className="login-container__btn"
+                button="button"
+                dataTestid="login-submit-button"
+                isDisabled={ isDisabled }
+                handleClick={ this.handleClick }
+              >
+                Entrar
+              </Button>
               {responseApi && <Redirect to="/search" />}
             </form>
           </div>
