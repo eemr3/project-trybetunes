@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import './NavBar.css';
+
 class NavBar extends Component {
   render() {
     return (
-      <nav>
+      <nav className="nav-bar">
         <Link
           to="/search"
           data-testid="link-to-search"

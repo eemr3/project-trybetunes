@@ -1,6 +1,11 @@
-form {
+.form-login {
+  align-items: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
+  height: 314px;
+  justify-content: center;
+  width: 697px;
 }
 
 .login-container {
@@ -12,8 +17,9 @@ form {
 }
 
 .login-container img {
-  height: 300px;
-  width: 300px;
+  height: 208px;
+  margin-bottom: 100px;
+  width: 208px;
 }
 
 .loading-container-login {

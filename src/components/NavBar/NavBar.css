@@ -1,0 +1,21 @@
+.nav-bar {
+  display: flex;
+  width: 100%;
+}
+
+.nav-bar a {
+  align-items: center;
+  background-color: #f0f2f5;
+  color: #2fc18c;
+  display: flex;
+  flex-basis: 33.3%;
+  font-size: 28px;
+  height: 78px;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.nav-bar a:nth-child( even ) {
+  margin-left: 5px;
+  margin-right: 5px;
+}

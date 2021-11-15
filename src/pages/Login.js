@@ -54,7 +54,7 @@ class Login extends Component {
         : (
           <div data-testid="page-login" className="login-container">
             <img src={ Logo } alt="Logo Trybe Tunes" />
-            <form onSubmit={ this.handleClick }>
+            <form onSubmit={ this.handleClick } className="form-login">
               <Input
                 type="text"
                 inputName="name"

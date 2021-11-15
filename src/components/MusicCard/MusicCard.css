@@ -1,0 +1,13 @@
+.container-music-card {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 650px;
+}
+
+.container-music-card span {
+  display: inline-block;
+  width: 201px;
+  word-wrap: break-word;
+}
