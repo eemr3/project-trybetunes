@@ -13,14 +13,14 @@
 .content-album-info h2 {
   font-size: 36px;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 37px;
 }
 
 .content-album-info p {
-  font-weight: 300;
   font-size: 24px;
   font-style: normal;
+  font-weight: 300;
   line-height: 25px;
 }
 

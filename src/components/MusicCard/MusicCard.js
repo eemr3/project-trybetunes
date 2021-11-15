@@ -5,7 +5,7 @@ import './MusicCard.css';
 
 class MusicCard extends Component {
   render() {
-    const { musicName, previewUrl, trackId, onClick, value, isChecked } = this.props;
+    const { musicName, previewUrl, trackId, onClick, value } = this.props;
     return (
       <div className="container-music-card">
         <span>{ musicName }</span>
@@ -24,7 +24,6 @@ class MusicCard extends Component {
             data-testid={ `checkbox-music-${trackId}` }
             onClick={ onClick }
             value={ value }
-            name={ trackId }
           />
           Favorita
         </label>
