@@ -21,7 +21,7 @@ class Album extends Component {
       valueCheck: false,
 
       favorite: {},
-      checked: false,
+      // checked: false,
 
     };
   }
@@ -92,7 +92,7 @@ class Album extends Component {
       imageAlbum,
       musicsFavorite,
       valueCheck,
-      favorite,
+      // favorite,
     } = this.state;
 
     return (
