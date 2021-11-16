@@ -5,7 +5,15 @@ import './MusicCard.css';
 
 class MusicCard extends Component {
   render() {
-    const { musicName, previewUrl, trackId, onClick, value } = this.props;
+    const {
+      musicName,
+      previewUrl,
+      trackId,
+      onClick,
+      checked,
+      value,
+      onChange,
+    } = this.props;
     return (
       <div className="container-music-card">
         <span>{ musicName }</span>
@@ -18,12 +26,14 @@ class MusicCard extends Component {
         </audio>
         <label htmlFor={ trackId }>
           <input
+            name="check-music"
             type="checkbox"
-            name={ trackId }
             id={ trackId }
             data-testid={ `checkbox-music-${trackId}` }
             onClick={ onClick }
+            onChange={ onChange }
             value={ value }
+            checked={ checked }
           />
           Favorita
         </label>
@@ -36,15 +46,18 @@ MusicCard.propTypes = {
   musicName: PropTypes.string,
   previewUrl: PropTypes.string,
   trackId: PropTypes.number,
-  value: PropTypes.bool,
   onClick: PropTypes.func,
+  checked: PropTypes.bool.isRequired,
+  value: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 MusicCard.defaultProps = {
   musicName: '',
   previewUrl: '',
   trackId: '',
-  value: false,
   onClick: () => {},
+  onChange: () => {},
+  value: false,
 };
 export default MusicCard;

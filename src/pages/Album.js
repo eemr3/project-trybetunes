@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard/MusicCard';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 import './Album.css';
 import Loading from '../components/Loading';
@@ -16,8 +16,13 @@ class Album extends Component {
       name: '',
       nameAlbum: '',
       imageAlbum: '',
-      favorite: false,
       isLoading: false,
+      musicsFavorite: [],
+      valueCheck: false,
+
+      favorite: {},
+      checked: false,
+
     };
   }
 
@@ -25,24 +30,42 @@ class Album extends Component {
     const { match } = this.props;
     const { id } = match.params;
     this.getMusics(id);
+    this.getStorageMusicFavoriteSongs();
   }
 
-  // setFavorite = ({ target: { checked, type, id, name } }) => {
-  //   const value = type === 'checkbox' && checked;
-  //   // const { musics, idFavorite, musicsFavorite } = this.state;
-  //   this.setState(({ favorite: value, }));
-  // }
+  componentDidUpdate() {
+    const { musicsFavorite, musics } = this.state;
+    this.checkedFavorite(musicsFavorite, musics);
+  }
 
-  setFavoriteInAddSong = async ({ target: { checked, id } }) => {
-    const value = checked;
-    this.setState(({ isLoading: true }));
+  handleFilterFavorite = async ({ target }) => {
     const { musics } = this.state;
-    await addSong(musics.find((music) => music.trackId === Number(id)));
+    this.setState(({
+      favorite: await musics
+        .find((music) => music.trackId === Number(target.id)
+        && target.checked === true),
+
+    }));
+
+    this.setFavoriteInAddSong();
+  }
+
+  setFavoriteInAddSong = async () => {
+    // const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState(({ isLoading: true }));
+    const { favorite } = this.state;
+    await addSong(favorite);
     this.setState(({
       isLoading: false,
-      favorite: value,
+      // valueCheck: value,
     }));
   }
+
+  getStorageMusicFavoriteSongs = async () => {
+    const response = await getFavoriteSongs();
+    this.setState(({
+      musicsFavorite: response }));
+  };
 
   getMusics = async (id) => {
     const response = await getMusics(id);
@@ -54,6 +77,12 @@ class Album extends Component {
     }));
   }
 
+  checkedFavorite = (arr, valueMucis) => {
+    const result = arr
+      .some((favMusic) => favMusic.trackId === valueMucis.trackId);
+    return result;
+  }
+
   render() {
     const {
       musics,
@@ -61,6 +90,8 @@ class Album extends Component {
       isLoading,
       nameAlbum,
       imageAlbum,
+      musicsFavorite,
+      valueCheck,
       favorite,
     } = this.state;
 
@@ -75,18 +106,26 @@ class Album extends Component {
           </div>
           <div>
             { isLoading && <Loading />}
-            { musics.map((music, index) => (
-              <MusicCard
-                key={ `${index}-${music.trackId}` }
-                previewUrl={ music.previewUrl }
-                musicName={ music.trackName }
-                trackId={ music.trackId }
-                onClick={ this.setFavoriteInAddSong }
-                id={ music.trackId }
-                htmlFor={ music.trackId }
-                value={ favorite }
-              />
-            ))}
+            { musics.map((music, index) => {
+              const checkedI = this.checkedFavorite(musicsFavorite, music);
+              // musicsFavorite
+              //   .some((favMusic) => favMusic.trackId === music.trackId);
+
+              return (
+                <MusicCard
+                  key={ `${index}-${music.trackId}` }
+                  previewUrl={ music.previewUrl }
+                  musicName={ music.trackName }
+                  trackId={ music.trackId }
+                  // onChange={ (e) => e.target.value }
+                  onClick={ this.handleFilterFavorite }
+                  id={ music.trackId }
+                  htmlFor={ music.trackId }
+                  checked={ checkedI }
+                  value={ valueCheck }
+                />
+              );
+            })}
           </div>
         </div>
       </div>
