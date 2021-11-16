@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
 
 import './MusicCard.css';
 import Loading from '../Loading';
@@ -18,27 +18,27 @@ class MusicCard extends Component {
     this.getStorageMusicFavoriteSongs();
   }
 
-    setFavoriteInAddSong = async () => {
+    setFavoriteInAddSong = async ({ target: { checked } }) => {
       const { music } = this.props;
-      this.setState(({ isLoading: true }));
-      const { isChecked } = this.state;
-      if (!isChecked) {
-        await addSong(music);
-        this.setState(({
-          isChecked: true,
-          isLoading: false,
-        }));
-      }
-      if (isChecked) {
-        this.setState(({ isLoading: true }));
-        this.setState(({ isChecked: false, isLoading: false }));
-      }
+      this.setState({ isLoading: true }, async () => {
+        if (checked) {
+          await addSong(music);
+          this.setState(({
+            isChecked: true,
+            isLoading: false,
+          }));
+          console.log('000000');
+        } else {
+          console.log();
+          await removeSong(music);
+          this.setState({ isChecked: false, isLoading: false });
+        }
+      });
     }
 
     getStorageMusicFavoriteSongs = async () => {
       const { trackId } = this.props;
       const response = await getFavoriteSongs();
-
       this.setState(({ isChecked: response.some((music) => music.trackId === trackId) }));
     };
 
