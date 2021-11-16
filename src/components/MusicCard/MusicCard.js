@@ -19,7 +19,8 @@ class MusicCard extends Component {
   }
 
     setFavoriteInAddSong = async ({ target: { checked } }) => {
-      const { music } = this.props;
+      // Contribuição do Bruno Teixeira (Brunão T16-A)
+      const { music, changeChecked } = this.props;
       this.setState({ isLoading: true }, async () => {
         if (checked) {
           await addSong(music);
@@ -27,10 +28,9 @@ class MusicCard extends Component {
             isChecked: true,
             isLoading: false,
           }));
-          console.log('000000');
         } else {
-          console.log();
           await removeSong(music);
+          await changeChecked();
           this.setState({ isChecked: false, isLoading: false });
         }
       });
@@ -82,15 +82,17 @@ class MusicCard extends Component {
 MusicCard.propTypes = {
   musicName: PropTypes.string,
   previewUrl: PropTypes.string,
-  trackId: PropTypes.number,
+  trackId: PropTypes.string,
   music: PropTypes.shape({
     trackId: PropTypes.number,
   }).isRequired,
+  changeChecked: PropTypes.func,
 };
 
 MusicCard.defaultProps = {
   musicName: '',
   previewUrl: '',
   trackId: '',
+  changeChecked: () => {},
 };
 export default MusicCard;
