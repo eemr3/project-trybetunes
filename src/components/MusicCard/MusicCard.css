@@ -1,4 +1,4 @@
-.container-music-card {
+.content-music-card {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -6,7 +6,7 @@
   width: 650px;
 }
 
-.container-music-card span {
+.content-music-card span {
   display: inline-block;
   width: 201px;
   word-wrap: break-word;

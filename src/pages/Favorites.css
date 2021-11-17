@@ -1,0 +1,36 @@
+.container-favorite {
+  margin: 100px auto;
+  width: 80%;
+}
+
+.container-favorite h2 {
+  color: #001813;
+  margin-bottom: 30px;
+  margin-left: 170px;
+}
+
+.favorite__container-music-card {
+  border-bottom: 1px solid #e1e5eb;
+  border-top: 1px solid #e1e5eb;
+  display: flex;
+  margin: 0 auto;
+  padding: 20px 50px;
+  width: 70%;
+}
+
+.favorite__content-music-card {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.favorite__content-music-card span {
+  display: inline-block;
+  width: 201px;
+  word-wrap: break-word;
+}
+
+.favorite__content-music-card img {
+  border-radius: 50%;
+}

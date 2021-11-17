@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
+import Loading from '../Loading/Loading';
 
-import './MusicCard.css';
-import Loading from '../Loading';
+// import './MusicCard.css';
 
 class MusicCard extends Component {
   constructor() {
@@ -47,13 +47,17 @@ class MusicCard extends Component {
         musicName,
         previewUrl,
         trackId,
+        artWorkUrl,
+        className,
+        classNameCnt,
       } = this.props;
       const { isLoading, isChecked } = this.state;
       return (
-        <div className="container-music-card">
+        <div className={ classNameCnt }>
           {isLoading ? <Loading />
             : (
-              <>
+              <div className={ className }>
+                <img src={ artWorkUrl } alt={ musicName } />
                 <span>{ musicName }</span>
                 <audio data-testid="audio-component" src={ previewUrl } controls>
                   <track kind="captions" />
@@ -73,7 +77,8 @@ class MusicCard extends Component {
                   />
                   Favorita
                 </label>
-              </>)}
+              </div>
+            )}
         </div>
       );
     }
@@ -87,12 +92,18 @@ MusicCard.propTypes = {
     trackId: PropTypes.number,
   }).isRequired,
   changeChecked: PropTypes.func,
+  className: PropTypes.string,
+  classNameCnt: PropTypes.string,
+  artWorkUrl: PropTypes.string,
 };
 
 MusicCard.defaultProps = {
   musicName: '',
   previewUrl: '',
   trackId: '',
+  className: '',
+  classNameCnt: '',
+  artWorkUrl: '',
   changeChecked: () => {},
 };
 export default MusicCard;

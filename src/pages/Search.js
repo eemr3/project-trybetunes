@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header/Header';
-import Loading from '../components/Loading';
+import Loading from '../components/Loading/Loading';
 import searchAlbumsAPIs from '../services/searchAlbumsAPI';
 import Input from '../components/Input/Input';
 import Button from '../components/Button/Button';

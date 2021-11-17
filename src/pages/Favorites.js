@@ -3,6 +3,8 @@ import Header from '../components/Header/Header';
 import MusicCard from '../components/MusicCard/MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
+import './Favorites.css';
+
 class Favorites extends Component {
   constructor() {
     super();
@@ -25,17 +27,23 @@ class Favorites extends Component {
     return (
       <div data-testid="page-favorites">
         <Header />
-        {favoriteMusic.map((favMusic, index) => (
-          <MusicCard
-            key={ `${index}-${favMusic.trackId}` }
-            previewUrl={ favMusic.previewUrl }
-            musicName={ favMusic.trackName }
-            trackId={ favMusic.trackId }
-            music={ favMusic }
-            changeChecked={ this.listFavoriteSongs }
-          />
+        <div className="container-favorite">
+          <h2>Músicas favoritas:</h2>
+          {favoriteMusic.map((favMusic, index) => (
+            <MusicCard
+              key={ `${index}-${favMusic.trackId}` }
+              previewUrl={ favMusic.previewUrl }
+              musicName={ favMusic.trackName }
+              trackId={ favMusic.trackId }
+              artWorkUrl={ favMusic.artworkUrl60 }
+              music={ favMusic }
+              changeChecked={ this.listFavoriteSongs }
+              className="favorite__content-music-card"
+              classNameCnt="favorite__container-music-card"
+            />
 
-        ))}
+          ))}
+        </div>
       </div>
     );
   }

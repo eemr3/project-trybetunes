@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../../services/userAPI';
-import Loading from '../Loading';
+import Loading from '../Loading/Loading';
 import NavBar from '../NavBar/NavBar';
 import Logo from '../../images/logo-header.png';
 import UserAvatar from '../../images/default.png';

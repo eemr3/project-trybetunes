@@ -28,3 +28,21 @@
   height: 290px;
   width: 290px;
 }
+
+.content-music-card {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 650px;
+}
+
+.content-music-card span {
+  display: inline-block;
+  width: 201px;
+  word-wrap: break-word;
+}
+
+.content-music-card img {
+  display: none;
+}

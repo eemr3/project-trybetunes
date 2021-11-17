@@ -57,6 +57,8 @@ class Album extends Component {
               musicName={ music.trackName }
               trackId={ music.trackId }
               music={ music }
+              className="content-music-card"
+              classNameCnt="container-music-card"
             />))}
           </div>
         </div>

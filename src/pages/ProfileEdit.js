@@ -4,7 +4,7 @@ import Header from '../components/Header/Header';
 import Input from '../components/Input/Input';
 import Button from '../components/Button/Button';
 import { getUser, updateUser } from '../services/userAPI';
-import Loading from '../components/Loading';
+import Loading from '../components/Loading/Loading';
 
 class ProfileEdit extends Component {
   constructor() {
