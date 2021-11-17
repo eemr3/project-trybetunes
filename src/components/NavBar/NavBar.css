@@ -3,7 +3,7 @@
   width: 100%;
 }
 
-.nav-bar a {
+.nav-link {
   align-items: center;
   background-color: #f0f2f5;
   color: #2fc18c;
@@ -18,4 +18,9 @@
 .nav-bar a:nth-child( even ) {
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.active {
+  background-color: #2fc18c;
+  color: whitesmoke;
 }

@@ -30,6 +30,7 @@ class Header extends Component {
 
   render() {
     const { user, isLoading } = this.state;
+    // const { active } = this.props;
     return (
       <header data-testid="header-component" className="header-container">
         {isLoading === true ? (<Loading className="header-container__loading" />)

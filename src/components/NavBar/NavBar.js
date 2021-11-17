@@ -1,30 +1,38 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './NavBar.css';
 
 class NavBar extends Component {
   render() {
+    // const { active } = this.props;
     return (
       <nav className="nav-bar">
-        <Link
-          to="/search"
+        <NavLink
+          className="nav-link"
+          exact
+          activeClassName="active"
           data-testid="link-to-search"
+          to="/search"
         >
           Pesquisa
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
+          className="nav-link"
+          activeClassName="active"
           to="/favorites"
           data-testid="link-to-favorites"
         >
           Músicas Favoritas
-        </Link>
-        <Link
-          to="/profile"
+        </NavLink>
+        <NavLink
+          className="nav-link"
+          activeClassName="active"
           data-testid="link-to-profile"
+          to="/profile"
         >
           Perfil
-        </Link>
+        </NavLink>
       </nav>
     );
   }
