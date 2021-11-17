@@ -82,7 +82,7 @@ class MusicCard extends Component {
 MusicCard.propTypes = {
   musicName: PropTypes.string,
   previewUrl: PropTypes.string,
-  trackId: PropTypes.string,
+  trackId: PropTypes.number,
   music: PropTypes.shape({
     trackId: PropTypes.number,
   }).isRequired,
