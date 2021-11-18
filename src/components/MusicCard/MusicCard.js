@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
 import Loading from '../Loading/Loading';
 
-// import './MusicCard.css';
-
 class MusicCard extends Component {
   constructor() {
     super();

@@ -1,0 +1,80 @@
+.containe-page-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 70px auto;
+  width: 80%;
+}
+
+.containe-page-profile img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.profile__loading {
+  align-items: center;
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.page-profile__description {
+  margin-top: 10px;
+}
+
+.page-profile__name {
+  margin-top: 30px;
+}
+
+.page-profile__description p {
+  color: #3d495c;
+  font-family: Verdana , sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  margin-top: 5px;
+  width: 280px;
+}
+
+.page-profile__name p {
+  color: #3d495c;
+  font-family: Verdana , sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  margin: 1px 0 5px;
+  width: 280px;
+}
+
+.page-profile__email {
+  margin-top: 10px;
+}
+
+.page-profile__email p {
+  color: #3d495c;
+  font-family: Verdana , sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  margin: 1px 0 5px;
+  width: 280px;
+}
+
+.page-profile__btn a {
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #003be5;
+  color: #003be5;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  width: 120px;
+}

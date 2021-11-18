@@ -25,12 +25,12 @@ class Album extends Component {
 
   getMusics = async (id) => {
     const response = await getMusics(id);
-    this.setState(({
+    this.setState({
       musics: response.filter((music, index) => index !== 0 && music),
       name: response[0].artistName,
       nameAlbum: response[0].collectionName,
       imageAlbum: response[0].artworkUrl100,
-    }));
+    });
   }
 
   render() {
